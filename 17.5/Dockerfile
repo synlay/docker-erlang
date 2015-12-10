@@ -10,8 +10,8 @@ ENV REFRESHED_AT 2015-07-21
 
 ENV OTP_VERSION 17.5
 ENV OTP_BUILD_CONFIGURE_OPTIONS --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-m64-build --with-ssl
-ENV REBAR_VERSION 2.5.1
-ENV RELX_VERSION v1.2.0
+ENV REBAR_VERSION 2.6.1
+ENV RELX_VERSION v3.5.0
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
@@ -59,10 +59,10 @@ RUN cd /usr/src \
 # Building relx
 RUN cd /usr/src \
 	&& curl -SL https://github.com/erlware/relx/archive/${RELX_VERSION}.tar.gz | tar zxf - \
-    && cd relx-${RELX_VERSION} \
+    && cd relx-* \
     && make \
     && cp relx /usr/bin/relx \
-    && cd / && rm -rf /usr/src/relx-${RELX_VERSION}
+    && cd / && rm -rf /usr/src/relx-*
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

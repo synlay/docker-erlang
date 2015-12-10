@@ -10,8 +10,8 @@ ENV REFRESHED_AT 2015-08-31
 
 ENV OTP_VERSION 18.0
 ENV OTP_BUILD_CONFIGURE_OPTIONS --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-m64-build --with-ssl
-ENV REBAR_VERSION 2.6.0
-ENV REBAR3_VERSION beta-2
+ENV REBAR_VERSION 2.6.1
+ENV REBAR3_VERSION beta-4
 ENV RELX_VERSION v3.5.0
 
 # Use baseimage-docker's init system.
