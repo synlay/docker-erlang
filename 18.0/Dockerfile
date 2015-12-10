@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.17
+FROM phusion/baseimage:0.9.18
 
 MAINTAINER David Robakowski <david.robakowski@synlay.com>
 
@@ -30,15 +30,15 @@ ENV LC_ALL en_US.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive  \
 	apt-get update -qq \
 	&& apt-get install -y \
-			build-essential=11.6ubuntu6 \
-			git=1:1.9.1-1ubuntu0.1 \
-			libncurses5-dev=5.9+20140118-1ubuntu1 \
-			openssl=1.0.1f-1ubuntu2.15 \
-			libssl-dev=1.0.1f-1ubuntu2.15 \
-			fop=1:1.1.dfsg-2ubuntu1 \
-			xsltproc=1.1.28-2build1 \
-			unixodbc-dev=2.2.14p2-5ubuntu5 \
-			m4=1.4.17-2ubuntu1
+			build-essential=11.6\* \
+			git=1:1.9.1\* \
+			libncurses5-dev=5.9+20140118\* \
+			openssl=1.0.1f\* \
+			libssl-dev=1.0.1f\* \
+			fop=1:1.1.dfsg\* \
+			xsltproc=1.1.28\* \
+			unixodbc-dev=2.2.14p2\* \
+			m4=1.4.17\*
 
 # Build OTP from source
 RUN cd /usr/src \
