@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.17
+FROM phusion/baseimage:0.9.18
 
 MAINTAINER David Robakowski <david.robakowski@synlay.com>
 
@@ -6,12 +6,12 @@ MAINTAINER David Robakowski <david.robakowski@synlay.com>
 # is updated with the current date. It will force refresh of all
 # of the base images and things like `apt-get update` won't be using
 # old cached versions when the Dockerfile is built.
-ENV REFRESHED_AT 2015-08-31
+ENV REFRESHED_AT 2015-12-10
 
-ENV OTP_VERSION 18.0
+ENV OTP_VERSION 18.1
 ENV OTP_BUILD_CONFIGURE_OPTIONS --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-m64-build --with-ssl
-ENV REBAR_VERSION 2.6.0
-ENV REBAR3_VERSION beta-2
+ENV REBAR_VERSION 2.6.1
+ENV REBAR3_VERSION beta-4
 ENV RELX_VERSION v3.5.0
 
 # Use baseimage-docker's init system.
@@ -33,8 +33,8 @@ RUN DEBIAN_FRONTEND=noninteractive  \
 			build-essential=11.6ubuntu6 \
 			git=1:1.9.1-1ubuntu0.1 \
 			libncurses5-dev=5.9+20140118-1ubuntu1 \
-			openssl=1.0.1f-1ubuntu2.15 \
-			libssl-dev=1.0.1f-1ubuntu2.15 \
+			openssl=1.0.1f-1ubuntu2.16 \
+			libssl-dev=1.0.1f-1ubuntu2.16 \
 			fop=1:1.1.dfsg-2ubuntu1 \
 			xsltproc=1.1.28-2build1 \
 			unixodbc-dev=2.2.14p2-5ubuntu5 \
