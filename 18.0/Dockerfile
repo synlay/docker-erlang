@@ -6,12 +6,13 @@ MAINTAINER David Robakowski <david.robakowski@synlay.com>
 # is updated with the current date. It will force refresh of all
 # of the base images and things like `apt-get update` won't be using
 # old cached versions when the Dockerfile is built.
-ENV REFRESHED_AT 2015-07-21
+ENV REFRESHED_AT 2015-08-31
 
-ENV OTP_VERSION 17.5
+ENV OTP_VERSION 18.0
 ENV OTP_BUILD_CONFIGURE_OPTIONS --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-m64-build --with-ssl
-ENV REBAR_VERSION 2.5.1
-ENV RELX_VERSION v1.2.0
+ENV REBAR_VERSION 2.6.0
+ENV REBAR3_VERSION beta-2
+ENV RELX_VERSION v3.5.0
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
@@ -54,13 +55,22 @@ RUN cd /usr/src \
 	&& cp rebar /usr/bin/rebar \
 	&& cd / && rm -rf /usr/src/rebar-${REBAR_VERSION}
 
+# Building rebar3
+RUN cd /usr/src \
+	&& curl -SL https://github.com/rebar/rebar3/archive/${REBAR3_VERSION}.tar.gz | tar zxf - \
+	&& cd rebar3-${REBAR3_VERSION} \
+	&& ./bootstrap \
+	&& cp rebar3 /usr/bin/rebar3 \
+	&& cd / && rm -rf /usr/src/rebar3-${REBAR3_VERSION}
+
 # Building relx
 RUN cd /usr/src \
 	&& curl -SL https://github.com/erlware/relx/archive/${RELX_VERSION}.tar.gz | tar zxf - \
-    && cd relx-${RELX_VERSION} \
-    && make \
-    && cp relx /usr/bin/relx \
-    && cd / && rm -rf /usr/src/relx-${RELX_VERSION}
+    && cd relx-* \
+    && ./rebar3 update \
+    && ./rebar3 escriptize \
+    && cp _build/default/bin/relx /usr/bin/relx \
+    && cd / && rm -rf /usr/src/relx-*
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
