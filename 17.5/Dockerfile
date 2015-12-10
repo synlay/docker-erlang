@@ -25,6 +25,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+# m4 = only needed for HiPE support
 RUN DEBIAN_FRONTEND=noninteractive  \
 	apt-get update -qq \
 	&& apt-get install -y \
@@ -35,7 +36,8 @@ RUN DEBIAN_FRONTEND=noninteractive  \
 			libssl-dev=1.0.1f-1ubuntu2.15 \
 			fop=1:1.1.dfsg-2ubuntu1 \
 			xsltproc=1.1.28-2build1 \
-			unixodbc-dev=2.2.14p2-5ubuntu5
+			unixodbc-dev=2.2.14p2-5ubuntu5 \
+			m4=1.4.17-2ubuntu1
 
 # Build OTP from source
 RUN cd /usr/src \
