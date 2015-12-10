@@ -60,8 +60,9 @@ RUN cd /usr/src \
 RUN cd /usr/src \
 	&& curl -SL https://github.com/erlware/relx/archive/${RELX_VERSION}.tar.gz | tar zxf - \
     && cd relx-* \
-    && make \
-    && cp relx /usr/bin/relx \
+    && ./rebar3 update \
+    && ./rebar3 escriptize \
+    && cp _build/default/bin/relx /usr/bin/relx \
     && cd / && rm -rf /usr/src/relx-*
 
 # Clean up APT when done.
