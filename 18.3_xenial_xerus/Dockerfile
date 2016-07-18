@@ -8,7 +8,7 @@ MAINTAINER David Robakowski <david.robakowski@synlay.com>
 # old cached versions when the Dockerfile is built.
 ENV REFRESHED_AT 2016-07-18
 
-ENV OTP_VERSION 19.0
+ENV OTP_VERSION 18.3
 ENV OTP_BUILD_CONFIGURE_OPTIONS --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-m64-build --with-ssl
 ENV REBAR_VERSION 2.6.1
 ENV REBAR3_VERSION 3.2.0
