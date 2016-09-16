@@ -6,12 +6,12 @@ MAINTAINER David Robakowski <david.robakowski@synlay.com>
 # is updated with the current date. It will force refresh of all
 # of the base images and things like `apt-get update` won't be using
 # old cached versions when the Dockerfile is built.
-ENV REFRESHED_AT 2016-07-18
+ENV REFRESHED_AT 2016-09-16
 
 ENV OTP_VERSION 19.0
 ENV OTP_BUILD_CONFIGURE_OPTIONS --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll --enable-m64-build --with-ssl
-ENV REBAR_VERSION 2.6.1
-ENV REBAR3_VERSION 3.2.0
+ENV REBAR_VERSION 2.6.4
+ENV REBAR3_VERSION 3.3.1
 ENV RELX_VERSION v3.19.0
 
 # Use baseimage-docker's init system.
