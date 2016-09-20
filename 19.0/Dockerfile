@@ -29,7 +29,8 @@ ENV LC_ALL en_US.UTF-8
 # m4 = only needed for HiPE support
 RUN DEBIAN_FRONTEND=noninteractive  \
 	apt-get update -qq \
-	apt-get upgrade -qq \
+	&& apt-get --only-upgrade -qq install gnupg libgcrypt20 openssh-client \
+	    openssh-server openssh-sftp-server \
 	&& apt-get install -y \
 			build-essential=12.1\* \
 			git=1:2.7\* \
